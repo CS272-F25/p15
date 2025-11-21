@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule Test Drive</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+
+    <header>
+        <h1>Schedule a Test Drive</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="inventory.html">Inventory</a>
+            <a href="locations.html">Our Locations</a>
+            <a href="schedule-test-drive.html">Test Drive</a>
+        </nav>
+    </header>
+
+    <main class="content">
+        <h2>Book Your Test Drive</h2>
+
+        <form id="testDriveForm" class="form-box">
+
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" required>
+
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" required>
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" required>
+
+            <label for="car">Car You're Interested In:</label>
+            <input type="text" id="car" placeholder="e.g., 2020 Honda Civic" required>
+
+            <label for="date">Preferred Date:</label>
+            <input type="date" id="date" required>
+
+            <label for="time">Preferred Time:</label>
+            <input type="time" id="time" required>
+
+            <button type="submit" class="btn">Schedule Test Drive</button>
+
+        </form>
+
+        <p id="confirmationMessage" class="hidden success-message">
+            Your test drive has been scheduled! We'll contact you soon.
+        </p>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 AutoWorld Dealership</p>
+    </footer>
+
+    <script src="test-drive.js"></script>
+</body>
+</html>
