@@ -5,11 +5,20 @@ body {
     color: #222;
 }
 
+
 header {
-    background-color: #1a1a1a;
-    color: white;
     padding: 20px;
     text-align: center;
+}
+
+header.bg-light {
+    background-color: #f8f9fa !important;
+    color: #222 !important;
+}
+
+header.bg-dark, header:not(.bg-light) {
+    background-color: #1a1a1a;
+    color: white;
 }
 
 nav a {
