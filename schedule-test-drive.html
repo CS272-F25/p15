@@ -4,55 +4,70 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Schedule Test Drive</title>
-    <link rel="stylesheet" href="main.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
-    <header>
-        <h1>Schedule a Test Drive</h1>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="inventory.html">Inventory</a>
-            <a href="locations.html">Our Locations</a>
-            <a href="schedule-test-drive.html">Test Drive</a>
-        </nav>
-    </header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<div class="container">
+			<a class="navbar-brand" href="index.html">Four Dude's Dealership</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="mainNavbar">
+				<ul class="navbar-nav ms-auto">
+					<li class="nav-item"><a class="nav-link active" href="inventory.html">Inventory</a></li>
+					<li class="nav-item"><a class="nav-link" href="schedule-test-drive.html">Schedule Test Drive</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
 
-    <main class="content">
-        <h2>Book Your Test Drive</h2>
 
-        <form id="testDriveForm" class="form-box">
+        <main class="container py-5" id="testDriveApp">
+            <h1 class="mb-4 text-center">Schedule a Test Drive</h1>
+            <div class="row justify-content-center">
+                <div class="col-md-7 col-lg-6">
+                    <form id="testDriveForm" class="bg-white p-4 rounded shadow-sm border">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Full Name</label>
+                            <input type="text" id="name" class="form-control" required />
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email Address</label>
+                            <input type="email" id="email" class="form-control" required />
+                        </div>
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">Phone Number</label>
+                            <input type="tel" id="phone" class="form-control" required />
+                        </div>
+                        <div class="mb-3">
+                            <label for="car" class="form-label">Car You're Interested In</label>
+                            <input type="text" id="car" class="form-control" placeholder="e.g., 2020 Honda Civic" required />
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="date" class="form-label">Preferred Date</label>
+                                <input type="date" id="date" class="form-control" required />
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="time" class="form-label">Preferred Time</label>
+                                <input type="time" id="time" class="form-control" required />
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Schedule Test Drive</button>
+                    </form>
+                    <div id="confirmationMessage" class="alert alert-success mt-4 d-none text-center">
+                        Your test drive has been scheduled! We'll contact you soon.
+                    </div>
+                </div>
+            </div>
+        </main>
 
-            <label for="name">Full Name:</label>
-            <input type="text" id="name" required>
-
-            <label for="email">Email Address:</label>
-            <input type="email" id="email" required>
-
-            <label for="phone">Phone Number:</label>
-            <input type="tel" id="phone" required>
-
-            <label for="car">Car You're Interested In:</label>
-            <input type="text" id="car" placeholder="e.g., 2020 Honda Civic" required>
-
-            <label for="date">Preferred Date:</label>
-            <input type="date" id="date" required>
-
-            <label for="time">Preferred Time:</label>
-            <input type="time" id="time" required>
-
-            <button type="submit" class="btn">Schedule Test Drive</button>
-
-        </form>
-
-        <p id="confirmationMessage" class="hidden success-message">
-            Your test drive has been scheduled! We'll contact you soon.
-        </p>
-    </main>
-
-    <footer>
-        <p>&copy; 2025 AutoWorld Dealership</p>
-    </footer>
+        <footer class="py-4 bg-dark text-light text-center mt-auto">
+            <p class="mb-0">&copy; 2025 Four Dude's Dealership. All rights reserved.</p>
+        </footer>
 
     <script src="test-drive.js"></script>
 </body>
