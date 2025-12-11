@@ -1,0 +1,6 @@
+/* Force all car images to the same height and alignment */
+.featured-vehicles .card-img-top {
+  height: 250px;
+  width: 100%;
+  object-fit: cover; /* ensures image crops nicely instead of stretching */
+}
