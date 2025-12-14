@@ -4,6 +4,40 @@
 (function() {
 	const API_BASE = 'https://www.carqueryapi.com/api/0.3/';
 	const cache = new Map(); // in-memory cache for page session
+	const FAVORITES_KEY = 'favoriteVehicles';
+
+	// Favorites management
+	function getFavorites() {
+		try {
+			return JSON.parse(localStorage.getItem(FAVORITES_KEY)) || [];
+		} catch (e) {
+			return [];
+		}
+	}
+
+	function saveFavorites(favorites) {
+		localStorage.setItem(FAVORITES_KEY, JSON.stringify(favorites));
+	}
+
+	function generateVehicleId(vehicle) {
+		return `${vehicle.year}-${vehicle.make}-${vehicle.model}-${vehicle.trim}`.toLowerCase().replace(/\s+/g, '-');
+	}
+
+	function isFavorite(vehicleId) {
+		return getFavorites().some(fav => fav.id === vehicleId);
+	}
+
+	function toggleFavorite(vehicle) {
+		const favorites = getFavorites();
+		const existingIndex = favorites.findIndex(fav => fav.id === vehicle.id);
+		if (existingIndex > -1) {
+			favorites.splice(existingIndex, 1);
+		} else {
+			favorites.push(vehicle);
+		}
+		saveFavorites(favorites);
+		return existingIndex === -1; // returns true if added, false if removed
+	}
 
 	function jsonpRequest(params) {
 		return new Promise((resolve, reject) => {
@@ -137,14 +171,39 @@
 				}
 				const fragment = document.createDocumentFragment();
 				trims.slice(0, 12).forEach(t => {
+					const vehicle = {
+						year: year,
+						make: make.toUpperCase(),
+						model: t.model_name,
+						trim: t.model_trim || 'Standard',
+						body: t.model_body || 'N/A',
+						engine: t.model_engine_position || 'N/A',
+						drive: t.model_drive || 'N/A',
+						// Extended specs for comparison
+						power: t.model_engine_power_ps || null,
+						torque: t.model_engine_torque_nm || null,
+						transmission: t.model_transmission_type || 'N/A',
+						cityMPG: t.model_lkm_city || null,
+						hwyMPG: t.model_lkm_hwy || null,
+						fuelType: t.model_engine_fuel || 'N/A',
+						weight: t.model_weight_kg || null
+					};
+					vehicle.id = generateVehicleId(vehicle);
+					const isFav = isFavorite(vehicle.id);
+
 					const col = document.createElement('div');
 					col.className = 'col-md-4';
 					col.innerHTML = `
 						<div class="card h-100 shadow-sm">
 							<div class="card-body">
-								<h3 class="h6 card-title">${year} ${make.toUpperCase()} ${t.model_name} ${t.model_trim || ''}</h3>
-								<p class="small mb-2">Body: ${t.model_body || 'N/A'} | Engine: ${t.model_engine_position || 'N/A'}</p>
-								<p class="small mb-3">Drive: ${t.model_drive || 'N/A'} | Fuel: ${t.model_fuel_type || 'N/A'}</p>
+								<div class="d-flex justify-content-between align-items-start">
+									<h3 class="h6 card-title mb-0">${vehicle.year} ${vehicle.make} ${vehicle.model} ${vehicle.trim !== 'Standard' ? vehicle.trim : ''}</h3>
+									<button class="btn btn-link p-0 favorite-btn" data-vehicle='${JSON.stringify(vehicle)}' title="Add to favorites">
+										<i class="bi ${isFav ? 'bi-star-fill text-warning' : 'bi-star'}" style="font-size: 1.25rem;"></i>
+									</button>
+								</div>
+								<p class="small mb-2 mt-2">Body: ${vehicle.body} | Engine: ${vehicle.engine}</p>
+								<p class="small mb-3">Drive: ${vehicle.drive} | Fuel: ${vehicle.fuel}</p>
 								<a href="schedule-test-drive.html" class="btn btn-outline-primary btn-sm">Test Drive</a>
 							</div>
 						</div>`;
@@ -152,6 +211,22 @@
 				});
 				resultsEl.innerHTML = '';
 				resultsEl.appendChild(fragment);
+
+				// Add click handlers for favorite buttons
+				resultsEl.querySelectorAll('.favorite-btn').forEach(btn => {
+					btn.addEventListener('click', function() {
+						const vehicle = JSON.parse(this.dataset.vehicle);
+						const added = toggleFavorite(vehicle);
+						const icon = this.querySelector('i');
+						if (added) {
+							icon.classList.remove('bi-star');
+							icon.classList.add('bi-star-fill', 'text-warning');
+						} else {
+							icon.classList.remove('bi-star-fill', 'text-warning');
+							icon.classList.add('bi-star');
+						}
+					});
+				});
 			} catch (e) {
 				resultsEl.innerHTML = '<div class="col-12"><div class="alert alert-danger">Error loading trims.</div></div>';
 			}
