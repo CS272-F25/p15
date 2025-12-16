@@ -160,7 +160,7 @@
 		}
 
 		// Build header row
-		let headerCells = '<th scope="col" class="bg-light" style="min-width: 140px;">Specification</th>';
+		let headerCells = '<th scope="col" class="bg-light text-dark" style="min-width: 140px;">Specification</th>';
 		favorites.forEach((v, idx) => {
 			headerCells += `
 				<th scope="col" style="min-width: 180px;">
