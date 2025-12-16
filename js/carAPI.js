@@ -5,6 +5,26 @@
 	const API_BASE = 'https://www.carqueryapi.com/api/0.3/';
 	const cache = new Map(); // in-memory cache for page session
 	const FAVORITES_KEY = 'favoriteVehicles';
+	
+	// car images to randomly choose from(extra goal from meeting)
+	const carImages = [
+		'img/car1.jpg',
+		'img/car2.webp',
+		'img/car3.webp',
+		'img/car4.avif',
+		'img/car5.jpg',
+		'img/car6.jpeg',
+		'img/car7.jpg',
+		'img/car8.avif',
+		'img/car9.avif',
+		'img/city-sedan-2021.jpg',
+		'img/family-suv-2023.jpg',
+		'img/speedster-2022.jpg'
+	];
+	
+	function getRandomCarImage() {
+		return carImages[Math.floor(Math.random() * carImages.length)];
+	}
 
 	// Favorites management
 	function getFavorites() {
@@ -195,6 +215,7 @@
 					col.className = 'col-md-4';
 					col.innerHTML = `
 						<div class="card h-100 shadow-sm">
+							<img src="${getRandomCarImage()}" class="card-img-top" alt="${vehicle.year} ${vehicle.make} ${vehicle.model}" style="height: 200px; object-fit: cover;">
 							<div class="card-body">
 								<div class="d-flex justify-content-between align-items-start">
 									<h3 class="h6 card-title mb-0">${vehicle.year} ${vehicle.make} ${vehicle.model} ${vehicle.trim !== 'Standard' ? vehicle.trim : ''}</h3>

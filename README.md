@@ -12,3 +12,5 @@ A small, simple fake car dealership website. We allow you to search for cars, co
 - `compare-cars.html` — Compare cars you found on the inventory page.
 - `our-locations.html` — Addresses and information about dealership locations.
 - `schedule-test-drive.html` — Form to schedule a test drive.
+- `contact.html` — Simple page with a fake contact form.
+- `about.html` — An about us page with info on the dealership.

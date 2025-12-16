@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Four Dude's Dealership</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Four Dude's Dealership</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="inventory.html">Inventory</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="schedule-test-drive.html">Schedule Test Drive</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="compare-cars.html">Compare Cars</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="our-locations.html">Our Locations</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container py-5">
+        <div class="text-center mb-5">
+            <h1>Contact Us</h1>
+            <p class="lead">We're Here to Help - Get in Touch Today!</p>
+        </div>
+
+        <div class="row g-4 mb-5">
+            <div class="col-md-6 col-lg-3">
+                <div class="card h-100 text-center">
+                    <div class="card-body">
+                        <h3 class="card-title">Phone</h3>
+                        <p class="card-text"><strong>Sales:</strong> (999) 123-3907</p>
+                        <p class="card-text"><strong>Service:</strong> (999) 123-6767</p>
+                        <p class="card-text"><strong>Parts:</strong> (999) 223-4569</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3">
+                <div class="card h-100 text-center">
+                    <div class="card-body">
+                        <h3 class="card-title">Email</h3>
+                        <p class="card-text"><strong>General:</strong> info@fourdudes.com</p>
+                        <p class="card-text"><strong>Sales:</strong> sales@fourdudes.com</p>
+                        <p class="card-text"><strong>Service:</strong> service@fourdudes.com</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3">
+                <div class="card h-100 text-center">
+                    <div class="card-body">
+                        <h3 class="card-title">Address</h3>
+                        <p class="card-text">123 Bucky Badger Drive</p>
+                        <p class="card-text">Madison, WI 12345</p>
+                        <p class="card-text">United States</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3">
+                <div class="card h-100 text-center">
+                    <div class="card-body">
+                        <h3 class="card-title">Hours</h3>
+                        <p class="card-text"><strong>Mon-Fri:</strong> 9AM - 8PM</p>
+                        <p class="card-text"><strong>Saturday:</strong> 9AM - 6PM</p>
+                        <p class="card-text"><strong>Sunday:</strong> 10AM - 5PM</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title text-center mb-4">Send Us a Message</h3>
+                        <form action="#" method="POST">
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Full Name *</label>
+                                <input type="text" class="form-control" id="name" name="name" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email Address *</label>
+                                <input type="email" class="form-control" id="email" name="email" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="phone" class="form-label">Phone Number</label>
+                                <input type="tel" class="form-control" id="phone" name="phone">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="subject" class="form-label">Subject *</label>
+                                <select class="form-select" id="subject" name="subject" required>
+                                    <option value="">-- Select a Subject --</option>
+                                    <option value="sales">Sales Inquiry</option>
+                                    <option value="service">Service Question</option>
+                                    <option value="parts">Parts Request</option>
+                                    <option value="feedback">Feedback</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="message" class="form-label">Message *</label>
+                                <textarea class="form-control" id="message" name="message" rows="6" required></textarea>
+                            </div>
+
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary btn-lg">Send Message</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-dark text-white text-center py-3 mt-5">
+        <p class="mb-0">&copy; 2025 Four Dude's Dealership. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
