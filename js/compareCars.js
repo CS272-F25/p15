@@ -7,7 +7,6 @@
 	const FAVORITES_KEY = 'favoriteVehicles';
 	const priceCache = new Map();
 	
-	// CORS proxy to bypass browser restrictions (needed for local development)
 	const CORS_PROXY = 'https://corsproxy.io/?';
 
 	// Get favorites from localStorage
